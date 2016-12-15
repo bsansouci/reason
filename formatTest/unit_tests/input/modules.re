@@ -452,3 +452,11 @@ let module OldModuleSyntax = {
     let module InnerOldModule = {
     };
 };
+
+/* Allow for ppx in any module_expr */
+include [%matchenv
+  switch GL_BACKEND {
+  | "native" => Reglnative
+  | "web" => Reglweb
+  }
+];
